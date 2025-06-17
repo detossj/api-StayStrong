@@ -6,5 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class RoutineExercise extends Model
 {
-    //
+    protected $fillable = [
+        'routine_id',
+        'exercise_id',
+        'order'
+    ];
 }
