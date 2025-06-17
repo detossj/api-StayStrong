@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('routine_exercises', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('routine_id')->constrained()->onDelete('cascade');
+            $table->foreignId('exercise_id')->constrained()->onDelete('cascade');
+            $table->integer('order')->nullable();
             $table->timestamps();
         });
     }
