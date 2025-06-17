@@ -12,8 +12,8 @@ class RoutineController extends Controller
      * Crea una nueva rutina para el usuario autenticado
      * @authenticated
      * @header Authorization Bearer {token}
-     * @bodyParam title string required
-     * @bodyParam icon integer optional
+     * @bodyParam user_id integer required
+     * @bodyParam date date required
      */
     public function store(Request $request)
     {
