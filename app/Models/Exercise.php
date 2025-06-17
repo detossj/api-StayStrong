@@ -10,4 +10,9 @@ class Exercise extends Model
         'name',
         'description'
     ];
+
+    public function routineExercises()
+    {
+        return $this->hasMany(RoutineExercise::class);
+    }
 }

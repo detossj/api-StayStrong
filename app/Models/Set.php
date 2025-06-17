@@ -11,4 +11,11 @@ class Set extends Model
         'weight',
         'routine_exercise_id'
     ];
+
+    public function routineExercise() {
+
+        return $this->belongsTo(RoutineExercise::class);
+    }
+
+
 }

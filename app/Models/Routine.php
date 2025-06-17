@@ -10,4 +10,14 @@ class Routine extends Model
         'user_id',
         'date'
     ];
+
+    public function user() {
+
+        return $this->belongsTo(User::class);
+    }
+
+    public function routineExercises() {
+
+        return $this->hasMany(RoutineExercise::class);
+    }
 }
