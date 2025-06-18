@@ -13,18 +13,13 @@ class RoutineController extends Controller
      * Crea una nueva rutina para el usuario autenticado
      * @authenticated
      * @header Authorization Bearer {token}
-     * @bodyParam user_id integer required
-     * @bodyParam date date required
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'user_id' => 'required|integer|exists:users,id',
-            'date' => 'required|date',
-
+        $routine = $request->user()->routines()->create([
+            'date' => now(),
         ]);
 
-        $routine = $request->user()->routines()->create($validated);
         return response()->json($routine, 201);
     }
 

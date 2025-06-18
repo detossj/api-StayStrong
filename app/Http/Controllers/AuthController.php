@@ -4,17 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 use App\Models\User;
+
 class AuthController extends Controller
 {
+
     /**
      * @bodyParam name string required
      * @bodyParam email string required
      * @bodyParam password string required
      * @bodyParam password_confirmation string required
      */
-    public function register(Request $request){
-
+    public function register(Request $request)
+    {
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|unique:users',
@@ -36,12 +39,12 @@ class AuthController extends Controller
         ], 201);
     }
 
-    /** 
+    /**
      * @bodyParam email string required
      * @bodyParam password string required
      */
-    public function login(Request $request){
-        
+    public function login(Request $request)
+    {
         $request->validate([
             'email' => 'required|string|email',
             'password' => 'required|string',
@@ -49,7 +52,7 @@ class AuthController extends Controller
 
         $user = User::where('email', $request->email)->first();
 
-        if(! $user || ! Hash::check($request->password, $user->password)) {
+        if (! $user || ! Hash::check($request->password, $user->password)) {
             throw ValidationException::withMessages([
                 'email' => ['El correo electrónico o la contraseña son incorrectos.'],
             ]);
@@ -68,8 +71,8 @@ class AuthController extends Controller
      * @header Authorization Bearer {token}
      * @header Content-Type application/json
      */
-    public function logout(Request $request) {
-
+    public function logout(Request $request)
+    {
         $request->user()->currentAccessToken()->delete();
 
         return response()->json(['message' => 'Sesión cerrada correctamente']);
@@ -80,9 +83,8 @@ class AuthController extends Controller
      * @header Authorization Bearer {token}
      * @header Content-Type application/json
      */
-    public function profile(Request $request) {
-
+    public function profile(Request $request)
+    {
         return response()->json($request->user());
     }
-
 }
