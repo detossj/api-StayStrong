@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RoutineController;
+use App\Http\Controllers\RoutineExerciseController;
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
@@ -15,6 +16,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/profile', [AuthController::class, 'profile']);
 
     Route::apiResource('routines', RoutineController::class);
+    Route::apiResource('/routines/{routine}/exercises', RoutineExerciseController::class);
 
 
 });
