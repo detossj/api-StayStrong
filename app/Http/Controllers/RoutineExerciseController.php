@@ -14,7 +14,7 @@ class RoutineExerciseController extends Controller
      * @bodyParam order integer optional
      */
 
-     public function store(Request $request, $routineId) {
+    public function store(Request $request, $routineId) {
         $validated = $request->validate([
             'order'         => 'nullable|integer',
             'exercise_id'   => 'required|exists:exercises,id',
@@ -42,13 +42,37 @@ class RoutineExerciseController extends Controller
      * @header Authorization Bearer {token}
      */
 
-    public function index(Request $request, $routineId) {
+     public function index(Request $request, $routineId) {
         $routine = $request->user()->routines()->find($routineId);
-
+    
         if (!$routine) {
             return response()->json(['message' => 'Rutina no encontrada'], 404);
         }
-
-        return response()->json($routine->routineExercises()->with('exercise')->get());
+    
+        // Trae los ejercicios de la rutina con sets y ejercicio relacionado
+        $routineExercises = $routine->routineExercises()
+            ->with(['exercise', 'sets'])
+            ->orderBy('order')
+            ->get();
+    
+        // Transforma para agrupar de forma limpia
+        $result = $routineExercises->map(function ($routineExercise) {
+            return [
+                'id' => $routineExercise->exercise->id,
+                'name' => $routineExercise->exercise->name,
+                'description' => $routineExercise->exercise->description,
+                'order' => $routineExercise->order,
+                'sets' => $routineExercise->sets->map(function ($set) {
+                    return [
+                        'id' => $set->id,
+                        'reps' => $set->reps,
+                        'weight' => $set->weight,
+                    ];
+                }),
+            ];
+        });
+    
+        return response()->json($result);
     }
+    
 }

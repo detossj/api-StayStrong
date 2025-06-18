@@ -16,7 +16,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/profile', [AuthController::class, 'profile']);
 
     Route::apiResource('routines', RoutineController::class);
-    Route::apiResource('/routines/{routine}/exercises', RoutineExerciseController::class);
+    Route::prefix('/routines/{routine}')->group(function () {
+        Route::get('/exercises', [RoutineExerciseController::class, 'index']);
+        Route::post('/exercises', [RoutineExerciseController::class, 'store']);
+    });
 
 
 });
