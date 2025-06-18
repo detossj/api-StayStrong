@@ -7,6 +7,18 @@ use App\Models\Routine;
 
 class RoutineController extends Controller
 {
+
+    /**
+     * Lista las rutinas del usuario autenticado
+     * @authenticated
+     * @header Authorization Bearer {token}
+     */
+    public function index(Request $request)
+    {
+        $routines = $request->user()->routines()->get();
+        return response()->json($routines);
+    }
+
      //METODO POST
 
     /**
