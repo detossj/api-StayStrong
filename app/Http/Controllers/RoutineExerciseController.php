@@ -41,26 +41,26 @@ class RoutineExerciseController extends Controller
      * @authenticated
      * @header Authorization Bearer {token}
      */
-
-     public function index(Request $request, $routineId) {
+    public function index(Request $request, $routineId) {
         $routine = $request->user()->routines()->find($routineId);
     
         if (!$routine) {
             return response()->json(['message' => 'Rutina no encontrada'], 404);
         }
     
-        // Trae los ejercicios de la rutina con sets y ejercicio relacionado
         $routineExercises = $routine->routineExercises()
             ->with(['exercise', 'sets'])
             ->orderBy('order')
             ->get();
     
-        // Transforma para agrupar de forma limpia
         $result = $routineExercises->map(function ($routineExercise) {
             return [
-                'id' => $routineExercise->exercise->id,
-                'name' => $routineExercise->exercise->name,
-                'description' => $routineExercise->exercise->description,
+                'id' => $routineExercise->id, 
+                'exercise' => [
+                    'id' => $routineExercise->exercise->id,
+                    'name' => $routineExercise->exercise->name,
+                    'description' => $routineExercise->exercise->description,
+                ],
                 'order' => $routineExercise->order,
                 'sets' => $routineExercise->sets->map(function ($set) {
                     return [
@@ -74,5 +74,31 @@ class RoutineExerciseController extends Controller
     
         return response()->json($result);
     }
+
+    
+    //METODO DELETE
+
+    /**
+     * Eliminar ejercicio de rutina autenticado
+     * @authenticated
+     * @header Authorization Bearer {token}
+     */
+    public function destroy(Request $request, $routineExerciseId)
+    {
+        // Buscar el RoutineExercise con su rutina y usuario
+        $routineExercise = \App\Models\RoutineExercise::with('routine')->find($routineExerciseId);
+
+        // Verificar que exista y que la rutina pertenezca al usuario autenticado
+        if (!$routineExercise || $routineExercise->routine->user_id !== $request->user()->id) {
+            return response()->json(['message' => 'No autorizado o no encontrado'], 404);
+        }
+
+        // Eliminar el RoutineExercise
+        $routineExercise->delete();
+
+        return response()->json(['message' => 'Ejercicio eliminado de la rutina correctamente']);
+    }
+
+    
     
 }
