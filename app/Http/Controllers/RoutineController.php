@@ -28,9 +28,11 @@ class RoutineController extends Controller
      */
     public function store(Request $request)
     {
+        $data = $request->validate([
+        'date' => 'required|date',]);
+
         $routine = $request->user()->routines()->create([
-            'date' => now(),
-        ]);
+        'date' => $data['date'],]);
 
         return response()->json($routine, 201);
     }
