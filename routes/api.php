@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RoutineController;
 use App\Http\Controllers\RoutineExerciseController;
 use App\Http\Controllers\SetController;
+use App\Http\Controllers\ExerciseController;
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
@@ -17,6 +18,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/profile', [AuthController::class, 'profile']);
 
     Route::apiResource('routines', RoutineController::class);
+    
 
     Route::prefix('/routines/{routine}')->group(function () {
         Route::get('/exercises', [RoutineExerciseController::class, 'index']);
@@ -32,8 +34,8 @@ Route::middleware('auth:sanctum')->group(function () {
     });
     
 
-    
-    
+    Route::get('/exercises', [ExerciseController::class, 'index']);
+
 
 
 });
