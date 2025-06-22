@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+
 
 class ExercisesTableSeeder extends Seeder
 {
@@ -101,6 +103,11 @@ class ExercisesTableSeeder extends Seeder
             ['id' => 89, 'name' => 'press militar mancuernas', 'description' => 'Press militar mancuernas.'],
             ['id' => 90, 'name' => 'press militar barra', 'description' => 'Press militar barra.']
         ];
+
+        foreach ($exercises as &$exercise) {
+            // genera el nombre del archivo desde el nombre del ejercicio
+            $exercise['image_path'] = 'imagenes/' . Str::slug($exercise['name'], '_') . '.webp';
+        }
 
         DB::table('exercises')->insert($exercises);
     }
