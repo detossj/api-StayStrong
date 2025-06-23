@@ -9,7 +9,6 @@ class RoutineExercise extends Model
     protected $fillable = [
         'routine_id',
         'exercise_id',
-        'order'
     ];
 
     public function routine() {

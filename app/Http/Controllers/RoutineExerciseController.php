@@ -11,12 +11,10 @@ class RoutineExerciseController extends Controller
      * Crea un nueva rutina de ejercicios para el usuario autenticado
      * @authenticated
      * @header Authorization Bearer {token}
-     * @bodyParam order integer optional
      */
 
     public function store(Request $request, $routineId) {
         $validated = $request->validate([
-            'order'         => 'nullable|integer',
             'exercise_id'   => 'required|exists:exercises,id',
         ]);
 
@@ -26,7 +24,6 @@ class RoutineExerciseController extends Controller
         if (!$routine) {
             return response()->json(['message' => 'Rutina no encontrada'], 404);
         }
-
 
        // Crea el nuevo ejercicio en la rutina
        $routineExercise = $routine->routineExercises()->create($validated);
@@ -50,18 +47,19 @@ class RoutineExerciseController extends Controller
     
         $routineExercises = $routine->routineExercises()
             ->with(['exercise', 'sets'])
-            ->orderBy('order')
+            ->orderBy('id')  
             ->get();
     
         $result = $routineExercises->map(function ($routineExercise) {
             return [
-                'id' => $routineExercise->id, 
+                'id' => $routineExercise->id,
                 'exercise' => [
                     'id' => $routineExercise->exercise->id,
                     'name' => $routineExercise->exercise->name,
                     'description' => $routineExercise->exercise->description,
+                    'image_path' => $routineExercise->exercise->image_path,
                 ],
-                'order' => $routineExercise->order,
+
                 'sets' => $routineExercise->sets->map(function ($set) {
                     return [
                         'id' => $set->id,
@@ -74,7 +72,7 @@ class RoutineExerciseController extends Controller
     
         return response()->json($result);
     }
-
+    
     
     //METODO DELETE
 

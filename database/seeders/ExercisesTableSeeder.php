@@ -43,7 +43,6 @@ class ExercisesTableSeeder extends Seeder
             ['Extensión de Cadera', 'Glúteos, Isquiotibiales'],
             ['Extensión de Piernas', 'Cuádriceps'],
             ['Extensión de tríceps acostado con barra', 'Tríceps'],
-            ['Extensión de tríceps con mancuerna acostado', 'Tríceps'],
             ['Extensión de Tríceps con Mancuerna', 'Tríceps'],
             ['Extensión de tríceps tras nuca', 'Tríceps'],
             ['Face Pull', 'Deltoides posteriores, Trapecios, Romboides'],

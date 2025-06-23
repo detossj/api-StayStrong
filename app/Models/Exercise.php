@@ -8,7 +8,8 @@ class Exercise extends Model
 {
     protected $fillable = [
         'name',
-        'description'
+        'description',
+        'image_path'
     ];
 
     public function routineExercises()

@@ -124,7 +124,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: June 22, 2025</li>
+        <li>Last updated: June 23, 2025</li>
     </ul>
 </div>
 
@@ -858,7 +858,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"date\": \"2025-06-22T01:01:25\"
+    \"date\": \"2025-06-23T00:39:03\"
 }"
 </code></pre></div>
 
@@ -875,7 +875,7 @@ const headers = {
 };
 
 let body = {
-    "date": "2025-06-22T01:01:25"
+    "date": "2025-06-23T00:39:03"
 };
 
 fetch(url, {
@@ -975,10 +975,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="date"                data-endpoint="POSTapi-routines"
-               value="2025-06-22T01:01:25"
+               value="2025-06-23T00:39:03"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-06-22T01:01:25</code></p>
+<p>Must be a valid date. Example: <code>2025-06-23T00:39:03</code></p>
         </div>
         </form>
 
@@ -1301,7 +1301,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"order\": 17,
     \"exercise_id\": \"consequatur\"
 }"
 </code></pre></div>
@@ -1319,7 +1318,6 @@ const headers = {
 };
 
 let body = {
-    "order": 17,
     "exercise_id": "consequatur"
 };
 
@@ -1427,17 +1425,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>order</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="order"                data-endpoint="POSTapi-routines--routine--exercises"
-               value="17"
-               data-component="body">
-    <br>
-<p>optional Example: <code>17</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>exercise_id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
