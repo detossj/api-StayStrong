@@ -77,4 +77,30 @@ class SetController extends Controller
 
         return response()->json(['message' => 'Set eliminado correctamente']);
     }
+
+
+    //METODO GET
+    /**
+     * Lista todos las sets de un ejercicio autenticado
+     * @authenticated
+     * @header Authorization Bearer {token}
+     */
+    public function index(Request $request, $routineId, $routineExerciseId)
+    {
+
+        $routine = $request->user()->routines()->where('id', $routineId)->first();
+    
+        if (!$routine) {
+            return response()->json(['message' => 'Rutina no encontrada '], 404);
+        }
+    
+        $routineExercise = $routine->routineExercises()->where('id', $routineExerciseId)->first();
+    
+        if (!$routineExercise) {
+            return response()->json(['message' => 'RoutineExercise no encontrado en esta rutina'], 404);
+        }
+    
+        return response()->json($routineExercise->sets);
+    }
+
 }
