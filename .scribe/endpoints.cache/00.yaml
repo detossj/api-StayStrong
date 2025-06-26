@@ -257,14 +257,14 @@ endpoints:
         name: date
         description: 'Must be a valid date.'
         required: true
-        example: '2025-06-25T00:21:08'
+        example: '2025-06-26T00:21:49'
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      date: '2025-06-25T00:21:08'
+      date: '2025-06-26T00:21:49'
     fileParameters: []
     responses: []
     responseFields: []
@@ -588,30 +588,8 @@ endpoints:
       routineExerciseId: consequatur
     queryParameters: []
     cleanQueryParameters: []
-    bodyParameters:
-      routineId:
-        name: routineId
-        description: ''
-        required: true
-        example: 17
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      routineExerciseId:
-        name: routineExerciseId
-        description: ''
-        required: true
-        example: 17
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanBodyParameters:
-      routineId: 17
-      routineExerciseId: 17
+    bodyParameters: []
+    cleanBodyParameters: []
     fileParameters: []
     responses:
       -

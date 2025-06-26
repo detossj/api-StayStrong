@@ -127,7 +127,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: June 25, 2025</li>
+        <li>Last updated: June 26, 2025</li>
     </ul>
 </div>
 
@@ -861,7 +861,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"date\": \"2025-06-25T00:21:08\"
+    \"date\": \"2025-06-26T00:21:49\"
 }"
 </code></pre></div>
 
@@ -878,7 +878,7 @@ const headers = {
 };
 
 let body = {
-    "date": "2025-06-25T00:21:08"
+    "date": "2025-06-26T00:21:49"
 };
 
 fetch(url, {
@@ -978,10 +978,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="date"                data-endpoint="POSTapi-routines"
-               value="2025-06-25T00:21:08"
+               value="2025-06-26T00:21:49"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-06-25T00:21:08</code></p>
+<p>Must be a valid date. Example: <code>2025-06-26T00:21:49</code></p>
         </div>
         </form>
 
@@ -1770,12 +1770,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --get "http://localhost:8000/api/routines/consequatur/exercises/consequatur/sets" \
     --header "Authorization: Bearer {token}" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"routineId\": 17,
-    \"routineExerciseId\": 17
-}"
-</code></pre></div>
+    --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
@@ -1789,15 +1784,9 @@ const headers = {
     "Accept": "application/json",
 };
 
-let body = {
-    "routineId": 17,
-    "routineExerciseId": 17
-};
-
 fetch(url, {
     method: "GET",
     headers,
-    body: JSON.stringify(body),
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
@@ -1923,30 +1912,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <br>
 <p>Example: <code>consequatur</code></p>
             </div>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>routineId</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="routineId"                data-endpoint="GETapi-routines--routine--exercises--routineExerciseId--sets"
-               value="17"
-               data-component="body">
-    <br>
-<p>Example: <code>17</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>routineExerciseId</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               step="any"               name="routineExerciseId"                data-endpoint="GETapi-routines--routine--exercises--routineExerciseId--sets"
-               value="17"
-               data-component="body">
-    <br>
-<p>Example: <code>17</code></p>
-        </div>
-        </form>
+                    </form>
 
                     <h2 id="endpoints-PUTapi-sets--setId-">Actualizar un set existente</h2>
 

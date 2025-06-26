@@ -18,7 +18,7 @@ class SetController extends Controller
     {
         // Validar datos
         $validated = $request->validate([
-            'reps' => 'required|integer|min:1',
+            'reps' => 'required|integer|min:0',
             'weight' => 'required|numeric|min:0',
         ]);
 
