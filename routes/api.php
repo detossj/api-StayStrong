@@ -8,6 +8,7 @@ use App\Http\Controllers\RoutineController;
 use App\Http\Controllers\RoutineExerciseController;
 use App\Http\Controllers\SetController;
 use App\Http\Controllers\ExerciseController;
+use App\Http\Controllers\RoutineVideoController;
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
@@ -15,7 +16,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function () {
 
     Route::post('/logout', [AuthController::class, 'logout']);
-    Route::post('/profile', [AuthController::class, 'profile']);
+    Route::get('/profile', [AuthController::class, 'profile']);
 
     Route::apiResource('routines', RoutineController::class);
     
@@ -36,6 +37,8 @@ Route::middleware('auth:sanctum')->group(function () {
     
 
     Route::get('/exercises', [ExerciseController::class, 'index']);
+
+    Route::get('/videos/random', [RoutineVideoController::class, 'random']);
 
 
 
