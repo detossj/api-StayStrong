@@ -9,6 +9,8 @@ use App\Http\Controllers\RoutineExerciseController;
 use App\Http\Controllers\SetController;
 use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\RoutineVideoController;
+use App\Http\Controllers\RecipeController;
+
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
@@ -39,6 +41,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/exercises', [ExerciseController::class, 'index']);
 
     Route::get('/videos/random', [RoutineVideoController::class, 'random']);
+
+
+    Route::get('/recipes', [RecipeController::class, 'index']);
+    Route::get('/recipes/{id}', [RecipeController::class, 'show']);
 
 
 
