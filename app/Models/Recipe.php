@@ -11,7 +11,8 @@ class Recipe extends Model
         'description',
         'ingredients',
         'steps',
-        'calories'
+        'calories',
+        'image_path'
     ];
 
     public function user() {
