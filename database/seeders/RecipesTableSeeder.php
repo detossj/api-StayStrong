@@ -47,6 +47,85 @@ class RecipesTableSeeder extends Seeder
                 ]),
                 'calories' => 300,
             ],
+            [
+                'title' => 'Tacos de pescado al estilo Baja',
+                'description' => 'Tacos frescos y ligeros con pescado empanizado y salsa de col.',
+                'ingredients' => json_encode([
+                    '200g de filete de pescado blanco',
+                    '1 taza de col rallada',
+                    '4 tortillas de maíz',
+                    'Jugo de lima',
+                    'Mayonesa ligera',
+                    'Especias para pescado (comino, paprika, ajo en polvo)',
+                    'Sal y pimienta'
+                ]),
+                'steps' => json_encode([
+                    'Condimentar el pescado con las especias, sal y pimienta.',
+                    'Empanizar y freír ligeramente o cocinar a la plancha.',
+                    'Preparar la salsa mezclando mayonesa con jugo de lima.',
+                    'Armar los tacos con pescado, col y la salsa.',
+                    'Servir con rodajas de lima.'
+                ]),
+                'calories' => 420,
+            ],
+            [
+                'title' => 'Sopa cremosa de calabaza',
+                'description' => 'Una sopa suave y nutritiva perfecta para días fríos.',
+                'ingredients' => json_encode([
+                    '500g de calabaza pelada y picada',
+                    '1 cebolla picada',
+                    '2 dientes de ajo',
+                    '500ml de caldo de verduras',
+                    '100ml de crema ligera',
+                    'Aceite de oliva',
+                    'Sal y pimienta'
+                ]),
+                'steps' => json_encode([
+                    'Sofreír cebolla y ajo en aceite hasta transparentes.',
+                    'Agregar la calabaza y caldo, cocinar hasta que esté blanda.',
+                    'Licuar la mezcla hasta obtener una crema homogénea.',
+                    'Incorporar la crema ligera, salpimentar y calentar sin hervir.',
+                    'Servir caliente.'
+                ]),
+                'calories' => 350,
+            ],
+            [
+                'title' => 'Ensalada mediterránea de quinoa',
+                'description' => 'Una ensalada fresca con ingredientes mediterráneos y quinoa.',
+                'ingredients' => json_encode([
+                    '1 taza de quinoa cocida',
+                    '10 tomates cherry cortados a la mitad',
+                    '1 pepino picado',
+                    '100g de queso feta desmenuzado',
+                    'Aceitunas negras',
+                    'Jugo de limón',
+                    'Aceite de oliva',
+                    'Orégano, sal y pimienta'
+                ]),
+                'steps' => json_encode([
+                    'Mezclar la quinoa con tomates, pepino, aceitunas y queso feta.',
+                    'Aliñar con jugo de limón, aceite de oliva, orégano, sal y pimienta.',
+                    'Refrigerar por 30 minutos antes de servir.'
+                ]),
+                'calories' => 380,
+            ],
+            [
+                'title' => 'Batido energético de plátano y avena',
+                'description' => 'Batido ideal para antes o después del entrenamiento.',
+                'ingredients' => json_encode([
+                    '1 plátano maduro',
+                    '2 cucharadas de avena',
+                    '250ml de leche (puede ser vegetal)',
+                    '1 cucharadita de miel',
+                    'Canela al gusto'
+                ]),
+                'steps' => json_encode([
+                    'Colocar todos los ingredientes en la licuadora.',
+                    'Procesar hasta obtener una mezcla homogénea.',
+                    'Servir frío.'
+                ]),
+                'calories' => 290,
+            ],
         ];
 
         $recipes = [];
@@ -59,7 +138,7 @@ class RecipesTableSeeder extends Seeder
                 'ingredients' => $recipe['ingredients'],
                 'steps' => $recipe['steps'],
                 'calories' => $recipe['calories'],
-                'image_path' => 'recipes/' . Str::slug($recipe['title'], '_') . '.jpeg',
+                'image_path' => 'recipes/' . Str::slug($recipe['title'], '_') . '.jpg',
                 'created_at' => now(),
                 'updated_at' => now(),
             ];
