@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(RoutineVideoSeeder::class);
 
-        $this->call(RecipeSeeder::class);
+        $this->call(RecipesTableSeeder::class);
 
 
         User::factory()->create([

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->json('ingredients');
             $table->json('steps');
             $table->integer('calories');
+            $table->string('image_path');
             $table->timestamps();
         });
     }
