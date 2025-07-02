@@ -14,14 +14,14 @@ class RecipesTableSeeder extends Seeder
             [
                 'title' => 'Pollo con brócoli y quinoa',
                 'description' => 'Receta alta en proteínas y baja en carbohidratos, ideal para el fitness.',
-                'ingredients' => json_encode([
+                'ingredients' => implode("\n", [
                     '150g de pechuga de pollo',
                     '1 taza de brócoli',
                     '1/2 taza de quinoa cocida',
                     'Sal y pimienta al gusto',
                     'Aceite de oliva'
                 ]),
-                'steps' => json_encode([
+                'steps' => implode("\n", [
                     'Cocinar el pollo a la plancha con aceite de oliva.',
                     'Hervir el brócoli por 5 minutos.',
                     'Cocinar la quinoa siguiendo las instrucciones del paquete.',
@@ -32,7 +32,7 @@ class RecipesTableSeeder extends Seeder
             [
                 'title' => 'Ensalada de garbanzos y espinacas',
                 'description' => 'Una ensalada ligera, rica en fibra y proteínas vegetales.',
-                'ingredients' => json_encode([
+                'ingredients' => implode("\n", [
                     '1 taza de garbanzos cocidos',
                     '2 tazas de espinacas frescas',
                     '1 tomate picado',
@@ -40,7 +40,7 @@ class RecipesTableSeeder extends Seeder
                     'Jugo de limón',
                     'Sal y pimienta al gusto'
                 ]),
-                'steps' => json_encode([
+                'steps' => implode("\n", [
                     'Mezclar los garbanzos con las espinacas, tomate y cebolla.',
                     'Aliñar con jugo de limón, sal y pimienta.',
                     'Servir fresca.'
@@ -50,7 +50,7 @@ class RecipesTableSeeder extends Seeder
             [
                 'title' => 'Tacos de pescado al estilo Baja',
                 'description' => 'Tacos frescos y ligeros con pescado empanizado y salsa de col.',
-                'ingredients' => json_encode([
+                'ingredients' => implode("\n", [
                     '200g de filete de pescado blanco',
                     '1 taza de col rallada',
                     '4 tortillas de maíz',
@@ -59,7 +59,7 @@ class RecipesTableSeeder extends Seeder
                     'Especias para pescado (comino, paprika, ajo en polvo)',
                     'Sal y pimienta'
                 ]),
-                'steps' => json_encode([
+                'steps' => implode("\n", [
                     'Condimentar el pescado con las especias, sal y pimienta.',
                     'Empanizar y freír ligeramente o cocinar a la plancha.',
                     'Preparar la salsa mezclando mayonesa con jugo de lima.',
@@ -71,7 +71,7 @@ class RecipesTableSeeder extends Seeder
             [
                 'title' => 'Sopa cremosa de calabaza',
                 'description' => 'Una sopa suave y nutritiva perfecta para días fríos.',
-                'ingredients' => json_encode([
+                'ingredients' => implode("\n", [
                     '500g de calabaza pelada y picada',
                     '1 cebolla picada',
                     '2 dientes de ajo',
@@ -80,7 +80,7 @@ class RecipesTableSeeder extends Seeder
                     'Aceite de oliva',
                     'Sal y pimienta'
                 ]),
-                'steps' => json_encode([
+                'steps' => implode("\n", [
                     'Sofreír cebolla y ajo en aceite hasta transparentes.',
                     'Agregar la calabaza y caldo, cocinar hasta que esté blanda.',
                     'Licuar la mezcla hasta obtener una crema homogénea.',
@@ -92,7 +92,7 @@ class RecipesTableSeeder extends Seeder
             [
                 'title' => 'Ensalada mediterránea de quinoa',
                 'description' => 'Una ensalada fresca con ingredientes mediterráneos y quinoa.',
-                'ingredients' => json_encode([
+                'ingredients' => implode("\n", [
                     '1 taza de quinoa cocida',
                     '10 tomates cherry cortados a la mitad',
                     '1 pepino picado',
@@ -102,7 +102,7 @@ class RecipesTableSeeder extends Seeder
                     'Aceite de oliva',
                     'Orégano, sal y pimienta'
                 ]),
-                'steps' => json_encode([
+                'steps' => implode("\n", [
                     'Mezclar la quinoa con tomates, pepino, aceitunas y queso feta.',
                     'Aliñar con jugo de limón, aceite de oliva, orégano, sal y pimienta.',
                     'Refrigerar por 30 minutos antes de servir.'
@@ -112,14 +112,14 @@ class RecipesTableSeeder extends Seeder
             [
                 'title' => 'Batido energético de plátano y avena',
                 'description' => 'Batido ideal para antes o después del entrenamiento.',
-                'ingredients' => json_encode([
+                'ingredients' => implode("\n", [
                     '1 plátano maduro',
                     '2 cucharadas de avena',
                     '250ml de leche (puede ser vegetal)',
                     '1 cucharadita de miel',
                     'Canela al gusto'
                 ]),
-                'steps' => json_encode([
+                'steps' => implode("\n", [
                     'Colocar todos los ingredientes en la licuadora.',
                     'Procesar hasta obtener una mezcla homogénea.',
                     'Servir frío.'
@@ -138,7 +138,7 @@ class RecipesTableSeeder extends Seeder
                 'ingredients' => $recipe['ingredients'],
                 'steps' => $recipe['steps'],
                 'calories' => $recipe['calories'],
-                'image_path' => 'recipes/' . Str::slug($recipe['title'], '_') . '.jpg',
+                'image_path' => 'recipes/' . Str::slug($recipe['title'], '_') . '.webp',
                 'created_at' => now(),
                 'updated_at' => now(),
             ];

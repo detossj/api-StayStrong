@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->json('ingredients');
-            $table->json('steps');
+            $table->text('ingredients');
+            $table->text('steps');
             $table->integer('calories');
             $table->string('image_path');
             $table->timestamps();
