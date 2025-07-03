@@ -266,14 +266,14 @@ endpoints:
         name: date
         description: 'Must be a valid date.'
         required: true
-        example: '2025-07-01T02:15:04'
+        example: '2025-07-03T19:03:24'
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanBodyParameters:
-      date: '2025-07-01T02:15:04'
+      date: '2025-07-03T19:03:24'
     fileParameters: []
     responses: []
     responseFields: []
