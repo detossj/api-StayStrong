@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RoutineExerciseController extends Controller
 {
@@ -97,6 +98,29 @@ class RoutineExerciseController extends Controller
         return response()->json(['message' => 'Ejercicio eliminado de la rutina correctamente']);
     }
 
+    public function MonthlyVolume(Request $request)
+    {
+        $userId = $request->query('user_id');
     
+        try {
+            $volumes = DB::table('routines')
+                ->join('routine_exercises', 'routines.id', '=', 'routine_exercises.routine_id')
+                ->join('sets', 'routine_exercises.id', '=', 'sets.routine_exercise_id')
+                ->selectRaw('YEAR(routines.date) as year, MONTH(routines.date) as month, SUM(sets.reps * sets.weight) as volume')
+                ->where('routines.user_id', $userId)
+                ->groupBy('year', 'month')
+                ->orderBy('year')
+                ->orderBy('month')
+                ->get();
+    
+            return response()->json($volumes);
+        } catch (\Throwable $e) {
+            return response()->json([
+                'message' => 'Error interno',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+
     
 }
