@@ -12,20 +12,19 @@ class MonthlyVolumeSeeder extends Seeder
 {
     public function run()
     {
-        $userId = 2; // Asegúrate que este usuario exista en tu tabla users
+        $userId = 2; 
 
         $routineMayo = Routine::create([
             'user_id' => $userId,
             'date' => Carbon::create(2024, 5, 15),
         ]);
 
-        // Crear ejercicio para rutina Mayo
+
         $routineExerciseMayo = RoutineExercise::create([
             'routine_id' => $routineMayo->id,
-            'exercise_id' => 1, // Debe existir en tabla exercises
+            'exercise_id' => 1, 
         ]);
 
-        // Crear sets para rutina Mayo
         Set::insert([
             [
                 'routine_exercise_id' => $routineExerciseMayo->id,
@@ -43,19 +42,18 @@ class MonthlyVolumeSeeder extends Seeder
             ],
         ]);
 
-        // Crear rutina en Junio
+ 
         $routineJunio = Routine::create([
             'user_id' => $userId,
             'date' => Carbon::create(2024, 6, 10),
         ]);
 
-        // Crear ejercicio para rutina Junio
+      
         $routineExerciseJunio = RoutineExercise::create([
             'routine_id' => $routineJunio->id,
             'exercise_id' => 1,
         ]);
 
-        // Crear sets para rutina Junio
         Set::insert([
             [
                 'routine_exercise_id' => $routineExerciseJunio->id,
