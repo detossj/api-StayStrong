@@ -21,8 +21,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/profile', [AuthController::class, 'profile']);
     Route::patch('/profile', [AuthController::class, 'updateProfile']);
 
-    Route::apiResource('routines', RoutineController::class);
-    Route::post('/routines/default', [RoutineController::class, 'createDefault']);
+
+    Route::get('/routines', [RoutineController::class, 'index']);
+    Route::post('/routines', [RoutineController::class, 'store']);
+    Route::post('/routines/default', [RoutineController::class, 'storeRoutine']);
+
+
 
 
     Route::prefix('/routines/{routine}')->group(function () {

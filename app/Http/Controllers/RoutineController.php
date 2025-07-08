@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Routine;
+use App\Models\Exercise;
 
 class RoutineController extends Controller
 {
@@ -54,47 +55,44 @@ class RoutineController extends Controller
         return response()->json($routine);
     }
 
-
-    public function createDefault(Request $request)
+    public function storeRoutine(Request $request)
     {
-        $data = $request->validate([
-            'type' => 'required|in:full_body,mono',
-            'muscle_group' => 'required_if:type,mono|string',
-            'date' => 'nullable|date',
-        ]);
-
-        $date = $data['date'] ?? now();
-
-        
-        $routine = $request->user()->routines()->create([
-            'date' => $date,
-        ]);
-
-        
-        if ($data['type'] === 'mono') {
-            $exercises = Exercise::where('category', $data['muscle_group'])->get();
-        } else { 
-            
-            $exercises = Exercise::whereIn('category', [
-                'Pecho', 'Espalda', 'Piernas', 'Hombros', 'Brazos', 'Abdomen'
-            ])
-            ->inRandomOrder()
-            ->limit(10)
-            ->get();
-        }
-
-       
-        foreach ($exercises as $exercise) {
-            $routine->routineExercises()->create([
-                'exercise_id' => $exercise->id
+        try {
+            $data = $request->validate([
+                'date' => 'required|date',
+                'type' => 'required|string',  // full_body o categoria
             ]);
+    
+            $routine = $request->user()->routines()->create([
+                'date' => $data['date'],
+            ]);
+    
+            $exercises = collect();
+    
+            if ($data['type'] === 'full_body') {
+                // Full body: un ejercicio por cada categoría
+            } else {
+                // Rutina por categoría
+                $exercises = Exercise::where('category', $data['type'])->inRandomOrder()->limit(5)->get();
+            }
+            
+    
+            foreach ($exercises as $exercise) {
+                $routine->routineExercises()->create([
+                    'exercise_id' => $exercise->id,
+                ]);
+            }
+    
+            return response()->json([
+                'message' => 'Rutina creada exitosamente',
+                'routine' => $routine->load('routineExercises.exercise'),
+            ], 201);
+    
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Error interno: ' . $e->getMessage(),
+            ], 500);
         }
-
-        return response()->json([
-            'message' => 'Rutina generada con éxito',
-            'routine' => $routine,
-            'exercises_added' => $exercises
-        ], 201);
-        }
-
+    }
+    
 }

@@ -10,7 +10,6 @@ class Routine extends Model
         'user_id',
         'date',
         'type',
-        'muscle_group'
     ];
 
     public function user() {
