@@ -144,6 +144,24 @@ class RoutineVideoSeeder extends Seeder
                 'video_url' => 'https://www.youtube.com/watch?v=od3-9N0zhDE&t=8s',
                 'duration_minutes' => 16,
             ],
+            [
+                'title' => 'CÓMO EMPEZAR a ENTRENAR CALISTENIA en CASA',
+                'description' => 'He decidido compartiros una rutina de cuerpo entero o fullbody dedicada a principiantes que quieren saber cómo empezar a entrenar calistenia en CASA desde 0!',
+                'video_url' => 'https://www.youtube.com/watch?v=2PVk2wUY04k&ab_channel=NicoReyero',
+                'duration_minutes' => 10,
+            ],
+            [
+                'title' => 'Cómo empezar en el gym en 2025: Guía definitiva para principiante',
+                'description' => 'Cómo empezar en el gym en 2025 puede parecer un desafío, pero con esta guía definitiva para principiantes, estarás listo para transformar tu vida.',
+                'video_url' => 'https://www.youtube.com/watch?v=w_0hSr5U-2U&ab_channel=BenjaminTrainer',
+                'duration_minutes' => 19,
+            ],
+            [
+                'title' => 'CÓMO Crear la rutina de Entrenamiento Perfecta',
+                'description' => '¿Quieres una rutina de entrenamiento que realmente funcione? En este video te enseño paso a paso cómo diseñar la rutina perfecta según tu nivel, objetivos y disponibilidad.',
+                'video_url' => 'https://www.youtube.com/watch?v=XW0SnJZOxWo',
+                'duration_minutes' => 16,
+            ],
         ]);
     }
 }

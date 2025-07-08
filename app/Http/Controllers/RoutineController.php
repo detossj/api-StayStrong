@@ -38,29 +38,13 @@ class RoutineController extends Controller
         return response()->json($routine, 201);
     }
 
-    //METODO GET
-
-    /**
-     * Muestra una rutina específica del usuario
-     * @authenticated
-     * @header Authorization Bearer {token}
-     */
-    public function show(Request $request, $id)
-    {
-        $routine = $request->user()->routines()->find($id);
-        if (!$routine) {
-            return response()->json(['message' => 'Rutina no encontrada'], 404);
-        }
-
-        return response()->json($routine);
-    }
 
     public function storeRoutine(Request $request)
     {
         try {
             $data = $request->validate([
                 'date' => 'required|date',
-                'type' => 'required|string',  // full_body o categoria
+                'type' => 'required|string',  
             ]);
     
             $routine = $request->user()->routines()->create([
@@ -70,9 +54,9 @@ class RoutineController extends Controller
             $exercises = collect();
     
             if ($data['type'] === 'full_body') {
-                // Full body: un ejercicio por cada categoría
+
             } else {
-                // Rutina por categoría
+
                 $exercises = Exercise::where('category', $data['type'])->inRandomOrder()->limit(5)->get();
             }
             

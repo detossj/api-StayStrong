@@ -126,6 +126,80 @@ class RecipesTableSeeder extends Seeder
                 ]),
                 'calories' => 290,
             ],
+            [
+                'title' => 'Pasta integral con espinaca y pollo',
+                'description' => 'Pasta saludable con proteína magra y vegetales.',
+                'ingredients' => implode("\n", [
+                    '100g de pasta integral',
+                    '150g de pechuga de pollo en cubos',
+                    '1 taza de espinaca fresca',
+                    '1 diente de ajo picado',
+                    'Aceite de oliva',
+                    'Sal y pimienta'
+                ]),
+                'steps' => implode("\n", [
+                    'Cocinar la pasta según las instrucciones.',
+                    'Saltear el pollo con ajo en aceite de oliva.',
+                    'Agregar la espinaca y cocinar hasta que se marchite.',
+                    'Mezclar con la pasta y servir caliente.'
+                ]),
+                'calories' => 480,
+            ],
+            [
+                'title' => 'Avena nocturna con frutos rojos',
+                'description' => 'Desayuno rápido, nutritivo y listo al despertar.',
+                'ingredients' => implode("\n", [
+                    '1/2 taza de avena',
+                    '1/2 taza de leche o bebida vegetal',
+                    '1/2 taza de frutos rojos',
+                    '1 cucharadita de miel',
+                    '1 cucharadita de chía'
+                ]),
+                'steps' => implode("\n", [
+                    'Mezclar todos los ingredientes en un frasco.',
+                    'Refrigerar toda la noche.',
+                    'Servir frío o a temperatura ambiente.'
+                ]),
+                'calories' => 310,
+            ],
+            [
+                'title' => 'Wok de vegetales y tofu',
+                'description' => 'Opción vegana rica en proteínas vegetales y fibra.',
+                'ingredients' => implode("\n", [
+                    '200g de tofu firme en cubos',
+                    '1 taza de brócoli',
+                    '1 zanahoria en tiras',
+                    '1 pimentón en tiras',
+                    '2 cucharadas de salsa de soya',
+                    'Aceite de sésamo',
+                    'Ajo y jengibre picados'
+                ]),
+                'steps' => implode("\n", [
+                    'Saltear tofu hasta dorar.',
+                    'Agregar vegetales, ajo y jengibre.',
+                    'Incorporar salsa de soya y cocinar 5 minutos.',
+                    'Servir caliente.'
+                ]),
+                'calories' => 360,
+            ],
+            [
+                'title' => 'Panqueques de avena y plátano',
+                'description' => 'Panqueques saludables sin azúcar refinada.',
+                'ingredients' => implode("\n", [
+                    '1 plátano maduro',
+                    '2 huevos',
+                    '1/2 taza de avena molida',
+                    '1/2 cucharadita de polvo de hornear',
+                    'Canela al gusto'
+                ]),
+                'steps' => implode("\n", [
+                    'Triturar el plátano y mezclar con los huevos.',
+                    'Añadir avena, polvo de hornear y canela.',
+                    'Cocinar en sartén antiadherente por ambos lados.',
+                    'Servir con fruta o miel.'
+                ]),
+                'calories' => 330,
+            ],
         ];
 
         $recipes = [];
