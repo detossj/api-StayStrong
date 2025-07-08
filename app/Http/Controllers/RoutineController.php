@@ -55,5 +55,46 @@ class RoutineController extends Controller
     }
 
 
+    public function createDefault(Request $request)
+    {
+        $data = $request->validate([
+            'type' => 'required|in:full_body,mono',
+            'muscle_group' => 'required_if:type,mono|string',
+            'date' => 'nullable|date',
+        ]);
+
+        $date = $data['date'] ?? now();
+
+        
+        $routine = $request->user()->routines()->create([
+            'date' => $date,
+        ]);
+
+        
+        if ($data['type'] === 'mono') {
+            $exercises = Exercise::where('category', $data['muscle_group'])->get();
+        } else { 
+            
+            $exercises = Exercise::whereIn('category', [
+                'Pecho', 'Espalda', 'Piernas', 'Hombros', 'Brazos', 'Abdomen'
+            ])
+            ->inRandomOrder()
+            ->limit(10)
+            ->get();
+        }
+
+       
+        foreach ($exercises as $exercise) {
+            $routine->routineExercises()->create([
+                'exercise_id' => $exercise->id
+            ]);
+        }
+
+        return response()->json([
+            'message' => 'Rutina generada con éxito',
+            'routine' => $routine,
+            'exercises_added' => $exercises
+        ], 201);
+        }
 
 }

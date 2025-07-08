@@ -22,7 +22,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::patch('/profile', [AuthController::class, 'updateProfile']);
 
     Route::apiResource('routines', RoutineController::class);
-    
+    Route::post('/routines/default', [RoutineController::class, 'createDefault']);
+
 
     Route::prefix('/routines/{routine}')->group(function () {
         Route::get('/exercises', [RoutineExerciseController::class, 'index']);

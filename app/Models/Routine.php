@@ -8,7 +8,9 @@ class Routine extends Model
 {
     protected $fillable = [
         'user_id',
-        'date'
+        'date',
+        'type',
+        'muscle_group'
     ];
 
     public function user() {

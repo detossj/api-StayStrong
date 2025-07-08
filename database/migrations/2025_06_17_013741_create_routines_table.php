@@ -15,7 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->date('date')->default(DB::raw('CURRENT_DATE'));
+            $table->string('type')->default('full_body'); 
+            $table->string('muscle_group')->nullable();  
             $table->timestamps();
+ 
         });
     }
 
