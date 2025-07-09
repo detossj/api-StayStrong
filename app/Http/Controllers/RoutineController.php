@@ -38,6 +38,21 @@ class RoutineController extends Controller
         return response()->json($routine, 201);
     }
 
+        /**
+     * Elimina una rutina del usuario autenticado
+     * @authenticated
+     * @header Authorization Bearer {token}
+     */
+    public function destroy($id)
+    {
+        $user = auth()->user();
+        $routine = $user->routines()->findOrFail($id);
+
+        $routine->delete();
+
+        return response()->json(['message' => 'Rutina eliminada correctamente']);
+    }
+
 
     public function storeRoutine(Request $request)
     {

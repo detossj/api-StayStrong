@@ -21,13 +21,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/profile', [AuthController::class, 'profile']);
     Route::patch('/profile', [AuthController::class, 'updateProfile']);
 
-
     Route::get('/routines', [RoutineController::class, 'index']);
     Route::post('/routines', [RoutineController::class, 'store']);
     Route::post('/routines/default', [RoutineController::class, 'storeRoutine']);
-
-
-
+    Route::delete('/routines/{routine}', [RoutineController::class, 'destroy']);
 
     Route::prefix('/routines/{routine}')->group(function () {
         Route::get('/exercises', [RoutineExerciseController::class, 'index']);
@@ -36,18 +33,14 @@ Route::middleware('auth:sanctum')->group(function () {
     
     });
 
-    Route::middleware('auth:sanctum')->group(function () {
-        Route::post('/routine-exercises/{routineExerciseId}/sets', [SetController::class, 'store']);
-        Route::get('/routines/{routine}/exercises/{routineExerciseId}/sets', [SetController::class, 'index']);
-        Route::put('/sets/{setId}', [SetController::class, 'update']);
-        Route::delete('/sets/{setId}', [SetController::class, 'destroy']);
-    });
-    
+    Route::post('/routine-exercises/{routineExerciseId}/sets', [SetController::class, 'store']);
+    Route::get('/routines/{routine}/exercises/{routineExerciseId}/sets', [SetController::class, 'index']);
+    Route::put('/sets/{setId}', [SetController::class, 'update']);
+    Route::delete('/sets/{setId}', [SetController::class, 'destroy']);
 
     Route::get('/exercises', [ExerciseController::class, 'index']);
 
     Route::get('/videos/random', [RoutineVideoController::class, 'random']);
-
 
     Route::get('/recipes', [RecipeController::class, 'index']);
     Route::get('/recipes/{id}', [RecipeController::class, 'show']);
