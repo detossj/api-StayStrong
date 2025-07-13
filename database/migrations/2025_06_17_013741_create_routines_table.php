@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('routines', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->date('date')->default(DB::raw('CURRENT_DATE'));
+            $table->date('date');
             $table->string('type')->default('full_body'); 
             $table->string('muscle_group')->nullable();  
             $table->timestamps();
